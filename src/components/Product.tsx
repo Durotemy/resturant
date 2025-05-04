@@ -98,15 +98,27 @@ const products = [
   },
 ];
 
+interface CartItem {
+  id: number;
+  image: string;
+  title: string;
+  price: string;
+  count: number;
+}
+
 const Product: React.FC = () => {
-  const { addToCart, removeFromCart, cartItems } = useStore();
-  const notify = (item: unknown) => {
-    toast(item.title + " successfully added to cart");
-    console.log(item);
-    addToCart(item);
+  const { addToCart } = useStore() as {
+    removeFromCart: (item: CartItem) => void;
+    cartItems: CartItem[];
+    incrementCount: (id: number) => void;
+    decrementCount: (id: number) => void;
+    addToCart: (item: CartItem) => void;
   };
 
-  console.log("we are here and it work", cartItems);
+  const notify = (item: CartItem) => {
+    toast(item.title + " successfully added to cart");
+    addToCart(item);
+  };
 
   AOS.init({
     once: false,
@@ -138,7 +150,10 @@ const Product: React.FC = () => {
                 <p className="product-title">{product.title}</p>
                 <p className="price">{product.price}</p>
               </div>
-              <div className="cartContainer" onClick={() => notify(product)}>
+              <div
+                className="cartContainer"
+                onClick={() => notify({ ...product, count: 1 })}
+              >
                 <IoIosAdd size={30} color={"#228b23"} />
               </div>
             </div>

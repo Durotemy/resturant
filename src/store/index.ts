@@ -1,18 +1,31 @@
 import { create } from "zustand";
 
+interface CartItem {
+  id: number;
+  image: string;
+  title: string;
+  price: string;
+  count: number;
+}
+
+interface StoreState {
+  cartItems: CartItem[];
+  addToCart: (item: CartItem) => void;
+  removeFromCart: (item: CartItem) => void;
+  incrementCount: (id: number) => void;
+  decrementCount: (id: number) => void;
+}
+
 export const useStore = create((set) => ({
   cartItems: [],
 
-  // Add item with count tracking
-  addToCart: (item) => {
-    set((state) => {
+  addToCart: (item: CartItem) => {
+    set((state: StoreState) => {
       const existingItem = state.cartItems.find((i) => i.id === item.id);
       if (existingItem) {
         return {
           cartItems: state.cartItems.map((i) =>
-            i.id === item.id
-              ? { ...i, count: i.count + 1 } // Increment count if item exists
-              : i
+            i.id === item.id ? { ...i, count: i.count + 1 } : i
           ),
         };
       } else {
@@ -23,26 +36,25 @@ export const useStore = create((set) => ({
     });
   },
 
-  // Remove item from the cart
-  removeFromCart: (item) => {
-    set((state) => ({
-      cartItems: state.cartItems.filter((cartItem) => cartItem.id !== item.id),
+  removeFromCart: (item: CartItem) => {
+    set((state: StoreState) => ({
+      cartItems: state.cartItems.filter(
+        (cartItem: { id: number }) => cartItem.id !== item.id
+      ),
     }));
   },
 
-  // Increment item count
-  incrementCount: (id) => {
-    set((state) => ({
-      cartItems: state.cartItems.map((item) =>
+  incrementCount: (id: number) => {
+    set((state: StoreState) => ({
+      cartItems: state.cartItems.map((item: { id: number; count: number }) =>
         item.id === id ? { ...item, count: item.count + 1 } : item
       ),
     }));
   },
 
-  // Decrement item count
-  decrementCount: (id) => {
-    set((state) => ({
-      cartItems: state.cartItems.map((item) =>
+  decrementCount: (id: number) => {
+    set((state: StoreState) => ({
+      cartItems: state.cartItems.map((item: { id: number; count: number }) =>
         item.id === id && item.count > 1
           ? { ...item, count: item.count - 1 }
           : item

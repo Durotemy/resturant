@@ -12,9 +12,23 @@ import { useStore } from "../store";
 
 const navLinkStyle = { padding: "0 5px" };
 
+interface CartItem {
+  id: number;
+  image: string;
+  title: string;
+  price: string;
+  count: number;
+}
+
 const Navbar = () => {
   const navigate = useNavigate();
-  const { addToCart, removeFromCart, cartItems } = useStore();
+  const { cartItems } = useStore() as {
+    removeFromCart: (item: CartItem) => void;
+    cartItems: CartItem[];
+    incrementCount: (id: number) => void;
+    decrementCount: (id: number) => void;
+    addToCart: (item: CartItem) => void;
+  };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -149,7 +163,7 @@ const Navbar = () => {
 
       {waitlistModalOpen && (
         <Waitlist
-          waitlistModalOpen={waitlistModalOpen}
+          WaitlistModalOpen={waitlistModalOpen}
           setWaitlistModalOpen={setWaitlistModalOpen}
         />
       )}

@@ -1,6 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -8,11 +7,9 @@ import { ToastContainer } from "react-toastify";
 
 import FoodCarousel from "./components/FoodCarousel";
 import Product from "./components/Product";
-import ContactModal from "./components/ContactModal";
-import Waitlist from "./components/Waitlist";
+
 import Navbar from "./components/NavBar";
 
-const navLinkStyle = { padding: "0 5px" };
 const searchInputStyle = {
   backgroundColor: "white",
   color: "#1d5811",
@@ -38,26 +35,6 @@ function Home() {
       throttleDelay: 99,
     });
   }, []);
-
-  const navigate = useNavigate();
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const isMobile = screenWidth < 768;
-
-  const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [waitlistModalOpen, setWaitlistModalOpen] = useState(false);
-
-  const openContactModal = () => setContactModalOpen(true);
-  const openWaitlistModal = () => setWaitlistModalOpen(true);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  useEffect(() => {
-    setScreenWidth(window.innerWidth);
-  }, [setScreenWidth]);
 
   return (
     <div>
@@ -97,20 +74,6 @@ function Home() {
           <br />
         </p>
       </div>
-
-      {contactModalOpen && (
-        <ContactModal
-          contactModalOpen={contactModalOpen}
-          setContactModalOpen={setContactModalOpen}
-        />
-      )}
-
-      {waitlistModalOpen && (
-        <Waitlist
-          waitlistModalOpen={waitlistModalOpen}
-          setWaitlistModalOpen={setWaitlistModalOpen}
-        />
-      )}
     </div>
   );
 }
