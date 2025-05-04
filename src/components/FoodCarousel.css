@@ -1,0 +1,84 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 10s linear infinite;
+  width: fit-content;
+}
+
+.carousel-slide {
+  flex: 0 0 300px;
+  margin: 0 15px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide:hover {
+  transform: scale(1.1);
+}
+
+.carousel-slide img {
+  width: 200%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-container-image {
+  margin-top: 80px;
+  width: 95%;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  color: white;
+}
+
+.slide-content h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 250px;
+  }
+  
+  .carousel-slide img {
+    height: 150px;
+  }
+  
+  .slide-content h3 {
+    font-size: 16px;
+  }
+} 
