@@ -3,98 +3,88 @@ import { toast } from "react-toastify";
 
 import "./Product.css";
 import { IoIosAdd } from "react-icons/io";
-
-import food1 from "../assets/svg/food1.svg";
-import food2 from "../assets/svg/food2.svg";
-import food3 from "../assets/svg/food3.svg";
-import food4 from "../assets/svg/food4.svg";
-import food5 from "../assets/svg/food5.svg";
-import food6 from "../assets/svg/food6.svg";
-import food7 from "../assets/svg/food7.svg";
-import turkey from "../assets/svg/Turkeyrt.svg";
-import bukkerStew from "../assets/svg/Buka-Stew.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useStore } from "../store";
 
+import AssortedMeatPepperSoup from "../assets/svg/AssortedMeatPepperSoup.svg";
+import ayamase from "../assets/svg/ayamase.svg";
+import BukaStew from "../assets/svg/BukaStew.svg";
+import coconutCury from "../assets/svg/cocunutCury.svg";
+import eforiro from "../assets/svg/eforiro.svg";
+import friedRice from "../assets/svg/friedRice.svg";
+import goatMeat from "../assets/svg/goatMeat.svg";
+import jollofRice from "../assets/svg/JollofRice.svg";
+import ofadaStew from "../assets/svg/OfadaStew.svg";
+import turkey from "../assets/svg/Turkey.svg";
+import whiteRice from "../assets/svg/whiteRice.svg";
+
 const products = [
   {
     id: 1,
-    image: food1,
+    image: AssortedMeatPepperSoup,
     title: "Assorted Meat & Pepper Soup",
-    price: "₦2,500",
+    price: "$140",
   },
   {
     id: 2,
-    image: food2,
-    title: "Efo riro",
-    price: "₦1,800",
+    image: ayamase,
+    title: "Ayamase",
+    price: "$120",
   },
   {
     id: 3,
-    image: food3,
-    title: "Soup",
-    price: "₦2,000",
+    image: BukaStew,
+    title: "Assorted Bukka Stew",
+    price: "$120",
   },
   {
     id: 4,
-    image: food4,
+    image: whiteRice,
     title: "White rice",
-    price: "₦1,500",
+    price: "$30",
   },
   {
     id: 5,
     image: turkey,
-    title: "Turkey",
-    price: "₦3,000",
+    title: "Peppered Turkey",
+    price: "$100",
   },
   {
     id: 6,
-    image: bukkerStew,
-    title: "Bukker Stew",
-    price: "₦2,200",
+    image: coconutCury,
+    title: "Coconut Chicken Curry",
+    price: "$80",
   },
   {
     id: 10,
-    image: food5,
-    title: "Rice",
-    price: "₦2,200",
+    image: eforiro,
+    title: "Efo Riro",
+    price: "$120",
   },
   {
     id: 11,
-    image: food6,
-    title: "Nice Meal",
-    price: "₦2,200",
+    image: friedRice,
+    title: "Fried Rice",
+    price: "$70",
   },
   {
     id: 12,
-    image: food7,
-    title: "Awesome dish",
-    price: "₦2,200",
+    image: goatMeat,
+    title: "Goat Meat",
+    price: "$150",
   },
   {
     id: 13,
-    image: bukkerStew,
-    title: "Stew",
-    price: "₦2,200",
+    image: jollofRice,
+    title: "Jollof Rice",
+    price: "$60",
   },
   {
     id: 7,
-    image: food4,
-    title: "White rice",
-    price: "₦1,500",
-  },
-  {
-    id: 9,
-    image: turkey,
-    title: "Turkey",
-    price: "₦3,000",
-  },
-  {
-    id: 8,
-    image: bukkerStew,
-    title: "Bukker Stew",
-    price: "₦2,200",
+    image: ofadaStew,
+    title: "Ofada Sauce",
+    price: "$120",
   },
 ];
 

@@ -1,49 +1,53 @@
 import React from "react";
 import "./FoodCarousel.css";
-import food1 from "../assets/svg/food1.svg";
-import food2 from "../assets/svg/food2.svg";
-import food3 from "../assets/svg/food3.svg";
-import food4 from "../assets/svg/food4.svg";
-import bukkerStew from "../assets/svg/Buka-Stew.svg";
-import turkey from "../assets/svg/Turkeyrt.svg";
+import AssortedMeatPepperSoup from "../assets/svg/AssortedMeatPepperSoup.svg";
+import ayamase from "../assets/svg/ayamase.svg";
+import BukaStew from "../assets/svg/BukaStew.svg";
+import coconutCury from "../assets/svg/cocunutCury.svg";
+// import eforiro from "../assets/svg/eforiro.svg";
+// import friedRice from "../assets/svg/friedRice.svg";
+// import goatMeat from "../assets/svg/goatMeat.svg";
+// import jollofRice from "../assets/svg/JollofRice.svg";
+// import ofadaStew from "../assets/svg/OfadaStew.svg";
+import turkey from "../assets/svg/Turkey.svg";
+import whiteRice from "../assets/svg/whiteRice.svg";
 
 const foodImages = [
   {
     id: 1,
-    image: food1,
-
+    image: AssortedMeatPepperSoup,
     title: "Assorted Meat & Pepper Soup",
+    price: "$140",
   },
   {
     id: 2,
-    image: food2,
-
-    // "https://images.unsplash.com/photo-1565299507177-b6ac87910f0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    title: "Efo riro",
+    image: ayamase,
+    title: "Ayamase",
+    price: "$120",
   },
   {
     id: 3,
-    image: food3,
-    // "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    title: "Soup",
+    image: BukaStew,
+    title: "Assorted Bukka Stew",
+    price: "$120",
   },
   {
     id: 4,
-    image: food4,
-    // "https://images.unsplash.com/photo-1565299507177-b6ac87910f0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    title: "White rice  ",
+    image: whiteRice,
+    title: "White rice",
+    price: "$30",
   },
   {
     id: 5,
     image: turkey,
-    // "https://images.unsplash.com/photo-1565299507177-b6ac87910f0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    title: "Turkey ",
+    title: "Peppered Turkey",
+    price: "$100",
   },
   {
     id: 6,
-    image: bukkerStew,
-    // "https://images.unsplash.com/photo-1565299507177-b6ac87910f0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-    title: "Bukker Stew ",
+    image: coconutCury,
+    title: "Coconut Chicken Curry",
+    price: "$80",
   },
 ];
 

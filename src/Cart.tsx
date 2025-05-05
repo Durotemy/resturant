@@ -118,7 +118,7 @@ const Cart = () => {
             <div className="total-amount">
               <h3>Total Amount:</h3>
               <p className="cartItem-price">
-                ₦{calculateTotal().toLocaleString()}
+                ${calculateTotal().toLocaleString()}
               </p>
             </div>
             <button className="proceed-button" onClick={handlePlaceOrder}>
