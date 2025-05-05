@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 import "./Product.css";
@@ -127,13 +127,27 @@ const Product: React.FC = () => {
     throttleDelay: 99,
   });
 
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false); // Track image loading state
+
+  const handleImageLoad = () => {
+    setImageLoaded(true); // Mark image as loaded when it finishes loading
+  };
+
   return (
     <div className="products-container">
       <div className="products-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image">
-              <img src={product.image} alt={product.title} loading="lazy" />
+              {!imageLoaded && <div className="spinner"></div>}
+
+              <img
+                src={product.image}
+                alt={product.title}
+                loading="lazy"
+                onLoad={handleImageLoad} // Set loading state to true when image is loaded
+                style={{ display: imageLoaded ? "block" : "none" }}
+              />
             </div>
             <div className="product-info">
               <div>
