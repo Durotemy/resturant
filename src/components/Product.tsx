@@ -19,7 +19,18 @@ import ofadaStew from "../assets/svg/OfadaStew.svg";
 import turkey from "../assets/svg/Turkey.svg";
 import whiteRice from "../assets/svg/whiteRice.svg";
 
-const products = [
+interface Product {
+  id: number;
+  image: string;
+  title: string;
+  price: string;
+}
+
+interface CartItem extends Product {
+  count: number;
+}
+
+const products: Product[] = [
   {
     id: 1,
     image: AssortedMeatPepperSoup,
@@ -88,14 +99,6 @@ const products = [
   },
 ];
 
-interface CartItem {
-  id: number;
-  image: string;
-  title: string;
-  price: string;
-  count: number;
-}
-
 const Product: React.FC = () => {
   const { addToCart } = useStore() as {
     removeFromCart: (item: CartItem) => void;
@@ -104,10 +107,17 @@ const Product: React.FC = () => {
     decrementCount: (id: number) => void;
     addToCart: (item: CartItem) => void;
   };
+  const [loadedImages, setLoadedImages] = useState<{ [key: number]: boolean }>(
+    {}
+  );
 
-  const notify = (item: CartItem) => {
-    toast(item.title + " successfully added to cart");
-    addToCart(item);
+  const handleImageLoad = (id: number) => {
+    setLoadedImages((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const notify = (item: Product) => {
+    toast(`${item.title} successfully added to cart`);
+    addToCart({ ...item, count: 1 });
   };
 
   AOS.init({
@@ -127,26 +137,25 @@ const Product: React.FC = () => {
     throttleDelay: 99,
   });
 
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false); // Track image loading state
-
-  const handleImageLoad = () => {
-    setImageLoaded(true); // Mark image as loaded when it finishes loading
-  };
-
   return (
     <div className="products-container">
       <div className="products-grid">
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image">
-              {!imageLoaded && <div className="spinner"></div>}
-
+              {!loadedImages[product.id] && (
+                <div className="image-placeholder">
+                  <div className="loading-spinner"></div>
+                </div>
+              )}
               <img
                 src={product.image}
                 alt={product.title}
-                loading="lazy"
-                onLoad={handleImageLoad}
-                style={{ display: imageLoaded ? "block" : "none" }}
+                onLoad={() => handleImageLoad(product.id)}
+                style={{
+                  opacity: loadedImages[product.id] ? 1 : 0,
+                  transition: "opacity 0.3s ease-in-out",
+                }}
               />
             </div>
             <div className="product-info">
@@ -154,10 +163,7 @@ const Product: React.FC = () => {
                 <p className="product-title">{product.title}</p>
                 <p className="price">{product.price}</p>
               </div>
-              <div
-                className="cartContainer"
-                onClick={() => notify({ ...product, count: 1 })}
-              >
+              <div className="cartContainer" onClick={() => notify(product)}>
                 <IoIosAdd size={30} color={"#228b23"} />
               </div>
             </div>
