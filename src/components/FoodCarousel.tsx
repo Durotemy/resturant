@@ -65,7 +65,7 @@ const FoodCarousel: React.FC = () => {
         ))}
         {foodImages.map((food) => (
           <div key={`duplicate-${food.id}`} className="carousel-slide">
-            <img src={food.image} alt={food.title} />
+            <img src={food.image} alt={food.title} loading="lazy" />
             <div className="slide-content">
               <h3>{food.title}</h3>
             </div>

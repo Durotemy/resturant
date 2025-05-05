@@ -133,7 +133,7 @@ const Product: React.FC = () => {
         {products.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image">
-              <img src={product.image} alt={product.title} />
+              <img src={product.image} alt={product.title} loading="lazy" />
             </div>
             <div className="product-info">
               <div>
