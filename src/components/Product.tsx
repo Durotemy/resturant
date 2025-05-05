@@ -145,7 +145,7 @@ const Product: React.FC = () => {
                 src={product.image}
                 alt={product.title}
                 loading="lazy"
-                onLoad={handleImageLoad} // Set loading state to true when image is loaded
+                onLoad={handleImageLoad}
                 style={{ display: imageLoaded ? "block" : "none" }}
               />
             </div>
