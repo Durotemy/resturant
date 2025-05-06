@@ -170,7 +170,7 @@ justify-content: left;
 
   .product-card {
     max-width: 310px;
-    max-height: 390px;
+    max-height: 200px;
     
   }
   
@@ -194,6 +194,11 @@ justify-content: left;
   .enjoy-food {
     font-size: 16px;
     line-height: 1.5;
+  }
+  .product-card {
+    max-width: 310px;
+    max-height: 380px;
+    
   }
   
   .product-image {
